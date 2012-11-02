@@ -37,7 +37,8 @@ include_once 'inc.php';
                         .item-title {
                                 font-size: 16px;
                                 color: #000000;
-                                .item-tagged {
+			}
+                        .item-tagged {
                                 color: #8D8D8D;
                                 font-size: 11px;
                         }
