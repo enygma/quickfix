@@ -13,8 +13,10 @@ switch($_SERVER['HTTP_HOST']){
 		break;
 	case 'dearrecruiters.org':
 		$siteType = 'js';
+		break;
 	case 'chipd.in':
 		$siteType = 'websec';
+		break;
 	default:
 		$siteType = 'php';
 }
