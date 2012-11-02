@@ -25,7 +25,7 @@ echo '<!-- '.$_SERVER['HTTP_HOST'].' -> '.$siteType.' -->';
 
 $jsonCacheFile  = 'var/cache/'.$siteType.'-quickfix.json';
 //$gimmieFeed     = 'https://gimmebar.com/api/v0/public/assets/phpquickfix';
-$gimmieFeed     = 'https://gimmebar.com/api/v0/public/assets/phpquickfix/phpquickfix';
+$gimmieFeed     = 'https://gimmebar.com/api/v0/public/assets/phpquickfix/'.$siteType.'quickfix';
 $wgetCmd        = 'wget -O'.$jsonCacheFile.' '.$gimmieFeed;
 
 // look for the cache file
