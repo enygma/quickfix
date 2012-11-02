@@ -1,0 +1,5 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+# rewrite the "/feed" URL to the main index file for now
+RewriteRule ^feed$ feed.php [NC]
