@@ -11,17 +11,9 @@ switch($_SERVER['HTTP_HOST']){
 	case 'websecquickfix.me':
 		$siteType = 'websec';	
 		break;
-	case 'dearrecruiters.org':
-		$siteType = 'js';
-		break;
-	case 'chipd.in':
-		$siteType = 'websec';
-		break;
 	default:
 		$siteType = 'php';
 }
-
-echo '<!-- '.$_SERVER['HTTP_HOST'].' -> '.$siteType.' -->';
 
 $jsonCacheFile  = 'var/cache/'.$siteType.'-quickfix.json';
 //$gimmieFeed     = 'https://gimmebar.com/api/v0/public/assets/phpquickfix';
