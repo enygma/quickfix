@@ -1,6 +1,4 @@
 <?php
-echo '<!-- '; print_r($_SERVER); echo '-->';
-
 switch($_SERVER['HTTP_HOST']){
     case 'phpquickfix.me':
         $siteType = 'php';
