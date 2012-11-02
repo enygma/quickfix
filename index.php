@@ -76,7 +76,7 @@ include_once 'inc.php';
                 <tr>
                         <td id="detail">
                         <?php
-                        $json = json_decode(file_get_contents('_cache/php-quickfix.json'));
+                        $json = json_decode(file_get_contents('/_cache/php-quickfix.json'));
                          foreach($json->records as $item){ ?>
                                 <div class="item">
                                         <a href="<?php echo $item->source; ?>" class="item-title"><?php echo $item->title; ?></a><br/>
