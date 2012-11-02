@@ -1,8 +1,23 @@
 <?php
+echo '<!-- '; print_r($_SERVER); echo '-->';
 
-$jsonCacheFile  = 'var/cache/php-quickfix.json';
+switch($_SERVER['HTTP_HOST']){
+    case 'phpquickfix.me':
+        $siteType = 'php';
+        break;
+    case 'jsquickfix.me':
+        $siteType = 'js';
+        break;
+    case 'websecquickfix.me':
+        $siteType = 'websec';   
+        break;
+    default:
+        $siteType = 'php';
+}
+
+$jsonCacheFile  = 'var/cache/'.$siteType.'-quickfix.json';
 //$gimmieFeed   = 'https://gimmebar.com/api/v0/public/assets/phpquickfix';
-$gimmieFeed     = 'https://gimmebar.com/api/v0/public/assets/phpquickfix/phpquickfix';
+$gimmieFeed     = 'https://gimmebar.com/api/v0/public/assets/phpquickfix/'.$siteType.'quickfix';
 $wgetCmd    = 'wget -O'.$jsonCacheFile.' '.$gimmieFeed;
 
 // look for the cache file
@@ -37,15 +52,13 @@ header('Content-type: text/xml; ; charset=UTF-8');
 echo sprintf(
     '<rss version="2.0">
      <channel>
-        <title>phpquickfix - get your fix now!</title>
+        <title>%s - get your fix now!</title>
         <description>Quick hits of PHP news coming your way</description>
         <language>en-us</language>
         <pubDate>%s</pubDate>
         %s
     </channel>
     </rss>
-',date('r'),$itemList);
-
-
+',$siteType.'quickfix', date('r'), $itemList);
 
 ?>
