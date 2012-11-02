@@ -4,7 +4,7 @@ include_once 'inc.php';
 ?>
 <html>
         <head>
-                <link rel="alternate" type="application/rss+xml" href="/feed" title="phpquickfix" />
+                <link rel="alternate" type="application/rss+xml" href="/feed" title="<?php echo $siteType; ?>quickfix" />
                 <link rel="stylesheet" type="text/css" href="/css/<?php echo $siteType; ?>.css">
         </head>
         <body>
