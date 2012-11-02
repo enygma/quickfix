@@ -1,6 +1,6 @@
 <?php
 
-$jsonCacheFile  = '/_cache/php-quickfix.json';
+$jsonCacheFile  = 'var/cache/php-quickfix.json';
 //$gimmieFeed   = 'https://gimmebar.com/api/v0/public/assets/phpquickfix';
 $gimmieFeed     = 'https://gimmebar.com/api/v0/public/assets/phpquickfix/phpquickfix';
 $wgetCmd    = 'wget -O'.$jsonCacheFile.' '.$gimmieFeed;
