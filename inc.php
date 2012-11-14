@@ -1,5 +1,4 @@
 <?php
-echo '<!-- '; print_r($_SERVER); echo '-->';
 
 switch($_SERVER['HTTP_HOST']){
 	case 'phpquickfix.me':
@@ -19,6 +18,10 @@ $jsonCacheFile  = 'var/cache/'.$siteType.'-quickfix.json';
 //$gimmieFeed     = 'https://gimmebar.com/api/v0/public/assets/phpquickfix';
 $gimmieFeed     = 'https://gimmebar.com/api/v0/public/assets/phpquickfix/'.$siteType.'quickfix';
 $wgetCmd        = 'wget -O'.$jsonCacheFile.' '.$gimmieFeed;
+
+if (isset($_GET['flush'])) {
+    exec('rm -rf '.$jsonCacheFile);
+}
 
 // look for the cache file
 if(!is_file($jsonCacheFile) || (is_file($jsonCacheFile) && filemtime($jsonCacheFile)<strtotime('-1 minute')) ){
