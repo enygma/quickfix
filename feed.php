@@ -9,6 +9,9 @@ switch($_SERVER['HTTP_HOST']){
     case 'websecquickfix.me':
         $siteType = 'websec';   
         break;
+    case 'apiquickfix.me':
+        $siteType = 'api';
+        break;
     default:
         $siteType = 'php';
 }
