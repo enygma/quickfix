@@ -35,13 +35,21 @@ $itemList = '';
 $data = json_decode($json);
 
 foreach($data->records as $item){
+    $title = htmlentities($item->title);
+
+    $title = str_replace(
+        array('&acirc;'),
+        array('-'),
+        $title
+    );
+
     $itemList .= sprintf('<item>
             <title>%s</title>
             <link>%s</link>
             <description>%s</description>
             <pubDate>%s</pubDate>
         </item>'."\n",
-    htmlentities($item->title),
+    $title,
     htmlspecialchars($item->source),
     //$item->title.' : '.$item->description,
     $item->description,
