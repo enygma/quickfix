@@ -38,8 +38,8 @@ foreach($data->records as $item){
     $title = htmlentities($item->title);
 
     $title = str_replace(
-        array('&acirc;'),
-        array('-'),
+        array('&acirc;', chr(226), chr(128), chr(147)),
+        array('-', ' ', ' ', ' '),
         $title
     );
 
