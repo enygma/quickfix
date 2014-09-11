@@ -20,7 +20,7 @@ switch($_SERVER['HTTP_HOST']){
 $jsonCacheFile  = 'var/cache/'.$siteType.'-quickfix.json';
 //$gimmieFeed     = 'https://gimmebar.com/api/v0/public/assets/phpquickfix';
 $gimmieFeed     = 'https://gimmebar.com/api/v0/public/assets/phpquickfix/'.$siteType.'quickfix';
-$wgetCmd        = 'wget -O'.$jsonCacheFile.' '.$gimmieFeed;
+$wgetCmd        = 'wget -O'.$jsonCacheFile.' '.$gimmieFeed.' > /dev/null &';
 
 if (isset($_GET['flush'])) {
     exec('rm -rf '.$jsonCacheFile);
