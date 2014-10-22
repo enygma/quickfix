@@ -21,7 +21,7 @@ $jsonCacheFile  = 'var/cache/'.$siteType.'-quickfix.json';
 // $gimmieFeed     = 'https://gimmebar.com/api/v0/public/assets/phpquickfix/'.$siteType.'quickfix';
 // $wgetCmd    = 'wget -O'.$jsonCacheFile.' '.$gimmieFeed;
 
-$delFeed = 'http://feeds.delicious.com/v2/json/phpquickfix/'.$siteType;
+$delFeed = 'http://feeds.delicious.com/v2/json/phpquickfix/'.$siteType.'quickfix';
 $wgetCmd    = 'wget -O'.$jsonCacheFile.' '.$delFeed;
 
 // look for the cache file
