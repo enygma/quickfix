@@ -8,7 +8,7 @@ switch($_SERVER['HTTP_HOST']){
 		$siteType = 'js';
 		break;
 	case 'websecquickfix.me':
-		$siteType = 'websec';	
+		$siteType = 'websec';
 		break;
     case 'apiquickfix.me':
         $siteType = 'api';
@@ -19,8 +19,11 @@ switch($_SERVER['HTTP_HOST']){
 
 $jsonCacheFile  = 'var/cache/'.$siteType.'-quickfix.json';
 //$gimmieFeed     = 'https://gimmebar.com/api/v0/public/assets/phpquickfix';
-$gimmieFeed     = 'https://gimmebar.com/api/v0/public/assets/phpquickfix/'.$siteType.'quickfix';
-$wgetCmd        = 'wget -O'.$jsonCacheFile.' '.$gimmieFeed.' > /dev/null &';
+// $gimmieFeed     = 'https://gimmebar.com/api/v0/public/assets/phpquickfix/'.$siteType.'quickfix';
+// $wgetCmd        = 'wget -O'.$jsonCacheFile.' '.$gimmieFeed.' > /dev/null &';
+
+$delFeed = 'http://feeds.delicious.com/v2/json/phpquickfix/'.$siteType;
+$wgetCmd    = 'wget -O'.$jsonCacheFile.' '.$delFeed;
 
 if (isset($_GET['flush'])) {
     exec('rm -rf '.$jsonCacheFile);

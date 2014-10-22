@@ -7,7 +7,7 @@ switch($_SERVER['HTTP_HOST']){
         $siteType = 'js';
         break;
     case 'websecquickfix.me':
-        $siteType = 'websec';   
+        $siteType = 'websec';
         break;
     case 'apiquickfix.me':
         $siteType = 'api';
@@ -18,8 +18,11 @@ switch($_SERVER['HTTP_HOST']){
 
 $jsonCacheFile  = 'var/cache/'.$siteType.'-quickfix.json';
 //$gimmieFeed   = 'https://gimmebar.com/api/v0/public/assets/phpquickfix';
-$gimmieFeed     = 'https://gimmebar.com/api/v0/public/assets/phpquickfix/'.$siteType.'quickfix';
-$wgetCmd    = 'wget -O'.$jsonCacheFile.' '.$gimmieFeed;
+// $gimmieFeed     = 'https://gimmebar.com/api/v0/public/assets/phpquickfix/'.$siteType.'quickfix';
+// $wgetCmd    = 'wget -O'.$jsonCacheFile.' '.$gimmieFeed;
+
+$delFeed = 'http://feeds.delicious.com/v2/json/phpquickfix/'.$siteType;
+$wgetCmd    = 'wget -O'.$jsonCacheFile.' '.$delFeed;
 
 // look for the cache file
 if(!is_file($jsonCacheFile) || (is_file($jsonCacheFile) && filemtime($jsonCacheFile)<strtotime('-1 minute')) ){
@@ -34,14 +37,18 @@ $itemList = '';
 
 $data = json_decode($json);
 
-foreach($data->records as $item){
-    $title = htmlentities($item->title);
+// foreach($data->records as $item){
+foreach($data as $item){
+    // $title = htmlentities($item->title);
+    $title = htmlentities($item->d);
 
     $title = str_replace(
         array('&acirc;', chr(226), chr(128), chr(147), '&raquo;', '&ndash;'),
         array('-', ' ', ' ', ' ','>','-'),
         $title
     );
+
+    $description = '#'.implode(', #', (array)$item->t);
 
     $itemList .= sprintf('<item>
             <title>%s</title>
@@ -50,9 +57,10 @@ foreach($data->records as $item){
             <pubDate>%s</pubDate>
         </item>'."\n",
     $title,
-    htmlspecialchars($item->source),
+    // htmlspecialchars($item->source),
+    htmlspecialchars($item->u),
     //$item->title.' : '.$item->description,
-    $item->description,
+    $description,
     date('r',$item->date));
 }
 
