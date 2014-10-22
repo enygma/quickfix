@@ -26,10 +26,16 @@ include_once 'inc.php';
                         $json = json_decode(file_get_contents('var/cache/'.$siteType.'-quickfix.json'));
                          foreach($json->records as $item){ ?>
                                 <div class="item">
-                                        <a href="<?php echo $item->source; ?>" class="item-title"><?php echo $item->title; ?></a><br/>
-                                        <span class="item-tagged">&nbsp;&nbsp;<b>tagged:</b> <?php foreach($item->tags as $tag){ echo $tag.' '; } ?></span>
+                                        <a href="<?php echo $item->source; ?>" class="item-title"><?php echo $item->t; ?></a><br/>
+                                        <span class="item-tagged">&nbsp;&nbsp;<b>tagged:</b> <?php
+                                            foreach((array)$item->t as $tag){ echo $tag.' '; }
+                                        ?></span>
 <br/>
-                                        <span class="item-tagged">&nbsp;&nbsp;<b>@</b><?php echo date('m.d.Y H:i:s',$item->date); ?>
+                                        <span class="item-tagged">&nbsp;&nbsp;<b>@</b><?php
+                                            // echo date('m.d.Y H:i:s',$item->date);
+                                            $date = new \DateTime($item->dt);
+                                            echo $date->format('m.d.Y H:i:s');
+                                        ?>
                                 </div>
                         <?php }
                         ?>

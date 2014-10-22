@@ -13,7 +13,7 @@ switch($_SERVER['HTTP_HOST']){
         $siteType = 'api';
         break;
     default:
-        $siteType = 'php';
+        $siteType = 'js';
 }
 
 $jsonCacheFile  = 'var/cache/'.$siteType.'-quickfix.json';
@@ -49,6 +49,7 @@ foreach($data as $item){
     );
 
     $description = '#'.implode(', #', (array)$item->t);
+    $date = new \DateTime($item->dt);
 
     $itemList .= sprintf('<item>
             <title><![CDATA[%s]]></title>
@@ -61,7 +62,7 @@ foreach($data as $item){
     htmlspecialchars($item->u),
     //$item->title.' : '.$item->description,
     $description,
-    date('r',$item->date));
+    $date->format('r'));
 }
 
 
