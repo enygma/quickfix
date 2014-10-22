@@ -51,9 +51,9 @@ foreach($data as $item){
     $description = '#'.implode(', #', (array)$item->t);
 
     $itemList .= sprintf('<item>
-            <title>%s</title>
+            <title><![CDATA[%s]></title>
             <link>%s</link>
-            <description>%s</description>
+            <description><![CDATA[%s]></description>
             <pubDate>%s</pubDate>
         </item>'."\n",
     $title,
