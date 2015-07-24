@@ -12,6 +12,9 @@ switch($_SERVER['HTTP_HOST']){
     case 'apiquickfix.me':
         $siteType = 'api';
         break;
+    case 'laravelquickfix.me':
+        $siteType = 'laravel';
+        break;
     default:
         $siteType = 'js';
 }
