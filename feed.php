@@ -42,6 +42,8 @@ $data = json_decode($json);
 
 // foreach($data->records as $item){
 foreach($data as $item){
+    if (!isset($item->d)) { continue; }
+
     // $title = htmlentities($item->title);
     $title = htmlentities($item->d);
 

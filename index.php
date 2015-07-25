@@ -24,7 +24,9 @@ include_once 'inc.php';
                         <td id="detail">
                         <?php
                         $json = json_decode(file_get_contents('var/cache/'.$siteType.'-quickfix.json'));
-                         foreach($json as $item){ ?>
+                         foreach($json as $item){
+                                if (!isset($item->d)) { continue; }
+                                ?>
                                 <div class="item">
                                         <a href="<?php echo $item->u; ?>" class="item-title"><?php echo $item->d; ?></a><br/>
                                         <span class="item-tagged">&nbsp;&nbsp;<b>tagged:</b> <?php
